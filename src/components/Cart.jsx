@@ -75,9 +75,9 @@ export default function Cart({ cartItems, onIncrease, onDecrease, onRemove }) {
 
                     <div className="cart-summary">
                         {discountApplied && (
-                            <p className="cart-subtotal">Subtotal: ${subtotal.toFixed(2)}</p>
+                            <p className="cart-subtotal">Subtotal: ₹{subtotal.toFixed(2)}</p>
                         )}
-                        <h4>Total: ${total.toFixed(2)}</h4>
+                        <h4>Total: ₹{total.toFixed(2)}</h4>
                     </div>
                 </>
             )}

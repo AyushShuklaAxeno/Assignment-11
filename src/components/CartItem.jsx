@@ -8,7 +8,7 @@ export default function CartItem({ name, price, quantity, maxQty, onIncrease, on
         <div className="cart-item">
             <div className="cart-item-details">
                 <h4>{name}</h4>
-                <p>${price} × {quantity} = <strong>${subtotal.toFixed(2)}</strong></p>
+                <p>₹{price} × {quantity} = <strong>₹{subtotal.toFixed(2)}</strong></p>
             </div>
             <div className="cart-item-controls">
                 <Button label="-" onClick={onDecrease} variant="secondary" />
