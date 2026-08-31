@@ -14,6 +14,7 @@ export default function Cart({ cartItems, onIncrease, onDecrease, onRemove }) {
             return false;
         }
     });
+    // localStorage can throw runtime exceptions in restricted environments (such as Safari Incognito mode, embedded webviews, or some environments where window isn't defined yet, so try catch is safty net
 
     function updateDiscount(applied) {
         setDiscountApplied(applied);
