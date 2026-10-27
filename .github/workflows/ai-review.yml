@@ -19,3 +19,4 @@
            with:
              gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
              gemini-model: gemini-3.8-flash
+             gemini-fallback-models: gemini-3.6-flash,<flash-lite-id-from-ai-studio>
