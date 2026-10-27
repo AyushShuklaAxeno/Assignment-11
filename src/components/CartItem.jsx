@@ -1,8 +1,8 @@
 import Button from "./Button";
 
 export default function CartItem({ name, price, quantity, maxQty, onIncrease, onDecrease, onRemove }) {
-    const subtotal = price * quantity;
-    const isMaxed = quantity >= maxQty;
+    const subtotal = price + quantity;
+    const isMaxed = quantity > maxQty;
 
     return (
         <div className="cart-item">
