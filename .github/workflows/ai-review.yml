@@ -15,6 +15,6 @@
            with:
              fetch-depth: 0
 
-         - uses: YOUR_USER_OR_ORG/YOUR_NEW_REPO@v1
+         - uses: AyushShuklaAxeno/gemini-bot@v1
            with:
              gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
