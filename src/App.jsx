@@ -65,9 +65,11 @@ function App() {
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const visibleProducts = products
-    .filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    )
+    .filter((product) => {
+      if (!searchTerm) return true;
+      const regex = new RegExp(searchTerm, "i");
+      return regex.test(product.name);
+    })
     .sort((a, b) => {
       if (sortOrder === "price-low") return a.price - b.price;
       if (sortOrder === "price-high") return b.price - a.price;
