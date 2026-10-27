@@ -18,3 +18,4 @@
          - uses: AyushShuklaAxeno/gemini-bot@v1
            with:
              gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
+             gemini-model: gemini-3.8-flash
