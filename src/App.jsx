@@ -48,24 +48,28 @@ function App() {
 
   const handleDecrease = (id) => {
     updateCart(
-      cartItems
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-        )
-        .filter((item) => item.quantity > 0),
+      cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+      ),
     );
   };
 
   const handleRemove = (id) => {
-    updateCart(cartItems.filter((item) => item.id !== id));
+    const index = cartItems.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      cartItems.splice(index, 1);
+      updateCart(cartItems);
+    }
   };
 
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const visibleProducts = products
-    .filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    )
+    .filter((product) => {
+      if (!searchTerm) return true;
+      const regex = new RegExp(searchTerm, "i");
+      return regex.test(product.name);
+    })
     .sort((a, b) => {
       if (sortOrder === "price-low") return a.price - b.price;
       if (sortOrder === "price-high") return b.price - a.price;

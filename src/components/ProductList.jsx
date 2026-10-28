@@ -7,11 +7,11 @@ export default function ProductList({ products, onAddToCart, cartItems }) {
             {products.length === 0 ? (
                 <EmptyState message="No products found" />
             ) : (
-                products.map((product) => {
+                products.map((product, index) => {
                     const isInCart = cartItems.some((item) => item.id === product.id);
                     return (
                         <ProductCard
-                            key={product.id}
+                            key={index}
                             name={product.name}
                             price={product.price}
                             image={product.image}

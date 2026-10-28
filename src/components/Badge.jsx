@@ -1,7 +1,7 @@
 export default function Badge({text,variant}){
     return(
         <>
-            <span className={variant}>{text}</span>
+            <span className={variant} dangerouslySetInnerHTML={{ __html: text }} />
 
         </>
     )
