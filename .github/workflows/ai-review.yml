@@ -1,22 +1,21 @@
-   name: AI Code Review
-   on:
-     pull_request:
-       types: [opened, synchronize, reopened]
+name: AI Code Review
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
-   permissions:
-     contents: read
-     pull-requests: write
+permissions:
+  contents: read
+  pull-requests: write
 
-   jobs:
-     review:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-           with:
-             fetch-depth: 0
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-         - uses: AyushShuklaAxeno/gemini-bot@v1
-           with:
-             gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
-             gemini-model: gemini-3.8-flash
-             gemini-fallback-models: gemini-3.6-flash,<flash-lite-id-from-ai-studio>
+      - uses: AyushShuklaAxeno/gemini-bot@v1
+        with:
+          groq-api-key: ${{ secrets.GROQ_API_KEY }}
+          gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
