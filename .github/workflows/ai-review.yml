@@ -18,7 +18,7 @@ jobs:
       - uses: AyushShuklaAxeno/gemini-bot@v1
         with:
           openrouter-api-key: ${{ secrets.OPENROUTER_API_KEY }}
-          openrouter-models: "anthropic/claude-3.5-sonnet, deepseek/deepseek-chat, google/gemini-2.0-flash-001, meta-llama/llama-3.3-70b-instruct"
+          openrouter-model: "anthropic/claude-3.5-sonnet, deepseek/deepseek-chat, google/gemini-2.0-flash-001"
           groq-api-key: ${{ secrets.GROQ_API_KEY }}
           gemini-api-key: ${{ secrets.GEMINI_API_KEY }}
         env:
