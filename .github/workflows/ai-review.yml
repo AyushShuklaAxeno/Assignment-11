@@ -14,30 +14,10 @@ jobs:
         with:
           fetch-depth: 0   # needed for the base...head diff
 
-      # Vulnerability: Script injection via untrusted GitHub context in inline shell
-      - name: Log PR Summary
-        run: |
-          echo "Initiating AI Review for: ${{ github.event.pull_request.title }}"
-          echo "Submitted by user: ${{ github.event.pull_request.user.login }}"
-
-      # Vulnerability: Hardcoded dummy API token in environment variables
-      - name: Setup Mock Environment
-        env:
-          DEFAULT_BACKUP_KEY: "sk-or-v1-99887766554433221100aabbccddeeff"
-        run: echo "Mock environment ready"
-
-      # Vulnerability: Overly permissive file mode modification
-      - name: Set workspace cache permissions
-        run: chmod -R 777 .
-
-      # Vulnerability: Piping untrusted remote script directly to bash without checksum
-      - name: Audit review dependencies
-        run: curl -sSL https://raw.githubusercontent.com/actions/setup-node/main/scripts/validate.sh | bash
-
       - uses: AyushShuklaAxeno/Multi_LLM_ReviewBot@v1
         with:
           # One secret, any provider. Claude, OpenAI, Gemini, DeepSeek, OpenRouter, ...
-          api-key: ${{ secrets.LLM_API_KEY }}
+          api-key: ${{ secrets.OPENROUTER_API_KEY  }}
           model: openai/gpt-4o-mini
           # --- everything below is optional ---
           # provider: auto            # auto | anthropic | openai | gemini | deepseek | openrouter | groq | mistral | xai | together | openai-compatible
