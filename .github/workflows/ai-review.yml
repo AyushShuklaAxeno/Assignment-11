@@ -1,0 +1,33 @@
+# Put in the repo you want reviewed: .github/workflows/ai-review.yml
+name: AI Code Review
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+    paths-ignore:
+      - '**/*.md'
+      - '**/package-lock.json'
+      - 'docs/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# A new push cancels the review still running for the previous push
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: github.event.pull_request.draft == false && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: AyushShuklaAxeno/Multi_LLM_ReviewBot@v1
+        with:
+          api-key: ${{ secrets.OPENROUTER_API_KEY }}
+          model: openai/gpt-4o-mini

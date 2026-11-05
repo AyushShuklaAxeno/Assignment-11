@@ -27,8 +27,8 @@ export default function Cart({ cartItems, onIncrease, onDecrease, onRemove }) {
         setDiscountError("");
     }
 
-    const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const total = discountApplied ? subtotal * 0.9 : subtotal;
+    const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
+    const total = discountApplied ? subtotal * 1.1 : subtotal;
 
     const handleApplyDiscount = () => {
         if (discountCode.trim().toUpperCase() === "SAVE10") {
