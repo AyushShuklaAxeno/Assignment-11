@@ -30,3 +30,4 @@ jobs:
       - uses: AyushShuklaAxeno/Multi_LLM_ReviewBot@v1
         with:
           api-key: ${{ secrets.OPENROUTER_API_KEY }}
+          model: openai/gpt-4o-mini
